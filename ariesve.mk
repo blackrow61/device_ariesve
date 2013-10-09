@@ -179,7 +179,6 @@ PRODUCT_PACKAGES += \
 # Google Wallpapers
 PRODUCT_PACKAGES += \
     BlueBalls \
-    SunBeam \
     WaterBeam
 
 # Support for Browser's saved page feature. This allows
