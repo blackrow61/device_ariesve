@@ -176,10 +176,6 @@ PRODUCT_PACKAGES += \
     PhotoTable \
     SoundRecorder
 
-# Google Wallpapers
-PRODUCT_PACKAGES += \
-    BlueBalls
-
 # Support for Browser's saved page feature. This allows
 # for pages saved on previous versions of the OS to be
 # viewed on the current OS.
