@@ -1,0 +1,12 @@
+*~
+.classpath
+.project
+.settings
+*.ap_
+*.dex
+*.class
+local.properties
+project.properties
+bin/
+gen/
+keys/
