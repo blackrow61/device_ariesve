@@ -58,6 +58,9 @@ debug.mdpcomp.logs=0
 # Fix screenshots with legacy FB
 ro.bq.gpu_to_cpu_unsupported=1
 
+# Disable Render dirty regions
+debug.hwui.render_dirty_regions=false
+
 # Low Power Audio
 lpa.decode=false
 lpa.use-stagefright=false
