@@ -49,7 +49,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := scorpion
 TARGET_USE_O3 := true
-TARGET_GCC_VERSION_EXP := 4.7.4
 
 # Dalvik startup with low memory footprint
 TARGET_ARCH_LOWMEM := true
@@ -161,14 +160,6 @@ TARGET_BOOTANIMATION_USE_RGB565 := true
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BOARD_FM_DEVICE := si4709
-
-# WebKit
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
-HTTP := chrome
-ENABLE_WEBGL := true
-WEBCORE_INPAGE_VIDEO := true
 
 # Debian multi-arch compatibility
 COMMON_GLOBAL_CFLAGS += -B/usr/lib/x86_64-linux-gnu
