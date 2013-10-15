@@ -52,7 +52,6 @@ dalvik.vm.debug.alloc=0
 com.qc.hardware=true
 debug.sf.hw=1
 debug.egl.hw=1
-debug.hwc.dynThreshold=1.9
 debug.mdpcomp.logs=0
 
 # Fix screenshots with legacy FB
@@ -69,7 +68,7 @@ lpa.use-stagefright=false
 af.resampler.quality=255
 
 # Set default USB interface
-persist.sys.usb.config=mtp,adb
+persist.sys.usb.config=mass_storage,adb
 
 # Increase speed for UMS transfer
 ro.vold.umsdirtyratio=50
