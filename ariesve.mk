@@ -173,7 +173,8 @@ PRODUCT_PACKAGES += \
     LockClock \
     PerformanceControl \
     PhotoTable \
-    SoundRecorder
+    SoundRecorder \
+    AriesParts
 
 # Support for Browser's saved page feature. This allows
 # for pages saved on previous versions of the OS to be
