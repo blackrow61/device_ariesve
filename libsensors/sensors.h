@@ -51,13 +51,13 @@ __BEGIN_DECLS
 
 /*****************************************************************************/
 
-#define EVENT_TYPE_ACCEL_X          REL_X
-#define EVENT_TYPE_ACCEL_Y          REL_Y
-#define EVENT_TYPE_ACCEL_Z          REL_Z
+#define EVENT_TYPE_ACCEL_X          ABS_X
+#define EVENT_TYPE_ACCEL_Y          ABS_Y
+#define EVENT_TYPE_ACCEL_Z          ABS_Z
 
-#define EVENT_TYPE_YAW              REL_X
-#define EVENT_TYPE_PITCH            REL_Y
-#define EVENT_TYPE_ROLL             REL_Z
+#define EVENT_TYPE_YAW              ABS_X
+#define EVENT_TYPE_PITCH            ABS_Y
+#define EVENT_TYPE_ROLL             ABS_Z
 
 #define EVENT_TYPE_MAGV_X           ABS_X
 #define EVENT_TYPE_MAGV_Y           ABS_Y

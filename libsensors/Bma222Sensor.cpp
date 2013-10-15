@@ -28,18 +28,18 @@
 /*****************************************************************************/
 
 Bma222Sensor::Bma222Sensor()
-    : SensorBase(NULL, "accelerometer_sensor"),
+    : SensorBase(NULL, "accelerometer"),
       mEnabled(0),
       mInputReader(4),
       mHasPendingEvent(false)
 {
-    ALOGV("Bma222Sensor::Bma222Sensor()");
+    ALOGD("Bma222Sensor::Bma222Sensor()");
     mPendingEvent.version = sizeof(sensors_event_t);
     mPendingEvent.sensor = ID_A;
     mPendingEvent.type = SENSOR_TYPE_ACCELEROMETER;
     memset(mPendingEvent.data, 0, sizeof(mPendingEvent.data));
     
-    ALOGV("Bma222Sensor::Bma222Sensor() open data_fd");
+    ALOGD("Bma222Sensor::Bma222Sensor() open data_fd");
 
     if (data_fd) {
         strcpy(input_sysfs_path, "/sys/class/input/");
@@ -53,7 +53,7 @@ Bma222Sensor::Bma222Sensor()
 
 Bma222Sensor::~Bma222Sensor()
 {
-    ALOGV("Bma222Sensor::~Bma222Sensor()");
+    ALOGD("Bma222Sensor::~Bma222Sensor()");
     if (mEnabled) {
         enable(0, 0);
     }
@@ -63,15 +63,15 @@ Bma222Sensor::~Bma222Sensor()
 
 int Bma222Sensor::enable(int32_t, int en)
 {
-    ALOGV("Bma222Sensor::~enable(0, %d)", en);
+    ALOGD("Bma222Sensor::~enable(0, %d)", en);
     int flags = en ? 1 : 0;
     if (flags != mEnabled) {
         int fd;
         strcpy(&input_sysfs_path[input_sysfs_path_len], "enable");
-        ALOGV("Bma222Sensor::~enable(0, %d) open %s",en, input_sysfs_path);
+        ALOGD("Bma222Sensor::~enable(0, %d) open %s",en, input_sysfs_path);
         fd = open(input_sysfs_path, O_RDWR);
         if (fd >= 0) {
-            ALOGV("Bma222Sensor::~enable(0, %d) opened %s",en, input_sysfs_path);
+            ALOGD("Bma222Sensor::~enable(0, %d) opened %s",en, input_sysfs_path);
             char buf[2];
             int err;
             buf[1] = 0;
@@ -102,7 +102,7 @@ bool Bma222Sensor::hasPendingEvents() const {
 
 int Bma222Sensor::setDelay(int32_t handle, int64_t ns)
 {
-    ALOGV("Bma222Sensor::~setDelay(%d, %lld)", handle, ns);
+    ALOGD("Bma222Sensor::~setDelay(%d, %lld)", handle, ns);
 
     int fd;
 
@@ -140,7 +140,7 @@ int Bma222Sensor::readEvents(sensors_event_t* data, int count)
 
     while (count && mInputReader.readEvent(&event)) {
         int type = event->type;
-        if (type == EV_REL) {
+        if (type == EV_ABS) {
             float value = event->value;
             if (event->code == EVENT_TYPE_ACCEL_X) {
                 mPendingEvent.acceleration.x = value * CONVERT_A_X;
