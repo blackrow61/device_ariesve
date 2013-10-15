@@ -65,27 +65,23 @@ on boot
 
     chown root system /proc/net/ip_conntrack
 
-    # magnetic
+    # geomagnetic
     chown system input /sys/class/input/event4/device/enable
     chown system input /sys/class/input/event4/device/delay
     chown system input /sys/class/input/event4/device/filter_enable
     chown system input /sys/class/input/event4/device/filter_len
+    chown system input /sys/class/input/event4/device/filter_noise
+    chown system input /sys/class/input/event4/device/filter_threshold
     chown system input /sys/class/input/event4/device/data
     chown system input /sys/class/input/event4/device/status
     chown system input /sys/class/input/event4/device/wake
-    chown system input /sys/class/input/event4/device/position
 
-    # magnetic raw
-    chown system input /sys/class/input/event5/device/enable
-    chown system input /sys/class/input/event5/device/delay
-    chown system input /sys/class/input/event5/device/data
-    chown system input /sys/class/input/event5/device/threshold
-    chown system input /sys/class/input/event5/device/distortion
-    chown system input /sys/class/input/event5/device/shape
-    chown compass input /sys/class/input/event5/device/offsets
-
-    write /sys/class/input/event5/device/threshold 1
-    write /sys/class/input/event5/device/distortion " 15 15 15"
+    # geomagnetic raw
+    chown system input /sys/class/input/input5/threshold
+    chown system input /sys/class/input/input5/distortion
+    chown system input /sys/class/input/input5/shape
+    chown compass input /sys/class/input/input5/offsets
+    chown compass input /sys/class/input/input5/dynamic_matrix
 
     # accelerometer
     chown system input /sys/class/input/event6/device/enable
@@ -117,7 +113,6 @@ on boot
     chown system input /sys/class/input/event9/device/raw_data
     chown system input /sys/class/input/event9/device/status
     chown system input /sys/class/input/event9/device/testmode
-
 
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
@@ -186,6 +181,17 @@ on boot
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/sampling_down_factor
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+    chmod 0664 /sys/devices/system/cpu/cpufreq/interactive/boostpulse
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chmod 0664 /sys/devices/system/cpu/cpufreq/interactive/min_sample_time
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    chmod 0664 /sys/devices/system/cpu/cpufreq/interactive/io_is_busy
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chmod 0664 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
+    chmod 0664 /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
 
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
 
