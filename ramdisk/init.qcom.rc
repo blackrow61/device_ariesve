@@ -114,6 +114,7 @@ on boot
     chown system input /sys/class/input/event9/device/status
     chown system input /sys/class/input/event9/device/testmode
 
+
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
@@ -135,7 +136,7 @@ on boot
     chown system audio /sys/devices/virtual/misc/amp/gain_all
     chown system audio /sys/devices/virtual/misc/amp/save
 
-    # Permissions for kernel
+     # Permissions for kernel
     chown radio system sys/devices/virtual/graphics/fb1/video_mode
     chown radio radio sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd
     chown radio radio sys/devices/virtual/aclset/switch_aclset/aclset_file_cmd
