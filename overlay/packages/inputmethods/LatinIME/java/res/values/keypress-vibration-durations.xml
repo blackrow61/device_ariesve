@@ -20,7 +20,9 @@
 <resources>
     <!-- Build condition,duration_in_milliseconds -->
     <string-array name="keypress_vibration_durations" translatable="false">
-        <item>,30</item>
+        <item>MODEL=GT-I9001:MANUFACTURER=samsung,8</item>
+        <!-- Default value for unknown device -->
+        <item>,20</item>
     </string-array>
 </resources>
 
