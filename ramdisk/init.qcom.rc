@@ -5,13 +5,13 @@ on early-init
     chmod 0644 /proc/cmdline
 
 on init
-    mkdir /storage 0550 system sdcard_r
+    mkdir /storage 0550 system sdcard_r 
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
     mkdir /storage/usbdisk 0000 system system
 
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk 
 
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
@@ -22,7 +22,7 @@ on init
     symlink /storage/usbdisk /mnt/usbdisk
 
 on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
+    # Set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
 on boot
@@ -65,7 +65,7 @@ on boot
 
     chown root system /proc/net/ip_conntrack
 
-    # geomagnetic
+    # Geomagnetic
     chown system input /sys/class/input/event4/device/enable
     chown system input /sys/class/input/event4/device/delay
     chown system input /sys/class/input/event4/device/filter_enable
@@ -76,14 +76,14 @@ on boot
     chown system input /sys/class/input/event4/device/status
     chown system input /sys/class/input/event4/device/wake
 
-    # geomagnetic raw
+    # Geomagnetic RAW
     chown system input /sys/class/input/input5/threshold
     chown system input /sys/class/input/input5/distortion
     chown system input /sys/class/input/input5/shape
     chown compass input /sys/class/input/input5/offsets
     chown compass input /sys/class/input/input5/dynamic_matrix
 
-    # accelerometer
+    # Accelerometer
     chown system input /sys/class/input/event6/device/enable
     chown system input /sys/class/input/event6/device/delay
     chown system input /sys/class/input/event6/device/position
@@ -92,21 +92,21 @@ on boot
     chown system input /sys/class/input/event6/device/data
     chown system input /sys/class/input/event6/device/calibration
 
-    # orientation
+    # Orientation
     chown system input /sys/class/input/event7/device/enable
     chown system input /sys/class/input/event7/device/delay
     chown system input /sys/class/input/event7/device/wake
     chown system input /sys/class/input/event7/device/data
     chown system input /sys/class/input/event7/device/status
 
-    # proximity
+    # Proximity
     chown system input /sys/class/input/event8/device/enable
     chown system input /sys/class/input/event8/device/delay
     chown system input /sys/class/input/event8/device/wake
     chown system input /sys/class/input/event8/device/data
     chown system input /sys/class/input/event8/device/status
 
-    # light sensor
+    # Light Sensor
     chown system input /sys/class/input/event9/device/enable
     chown system input /sys/class/input/event9/device/delay
     chown system input /sys/class/input/event9/device/wake
@@ -114,15 +114,10 @@ on boot
     chown system input /sys/class/input/event9/device/status
     chown system input /sys/class/input/event9/device/testmode
 
-
-    chown system system /sys/devices/platform/msm_sdcc.1/polling
-    chown system system /sys/devices/platform/msm_sdcc.2/polling
-    chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
-
-    # for Jig
+    # Jig
     chmod 0664 /sys/devices/virtual/jig/jig/jig
 
-    # for jack control
+    # Jack control
     chown system system /sys/class/jack/jack_selector/select_jack
 
     # Amp Tun (YDA165)
@@ -136,34 +131,36 @@ on boot
     chown system audio /sys/devices/virtual/misc/amp/gain_all
     chown system audio /sys/devices/virtual/misc/amp/save
 
-     # Permissions for kernel
-    chown radio system sys/devices/virtual/graphics/fb1/video_mode
-    chown radio radio sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd
-    chown radio radio sys/devices/virtual/aclset/switch_aclset/aclset_file_cmd
-    chown radio system sys/devices/virtual/sec/sec_lcd/lcd_power
-    chown radio system sys/devices/virtual/sec/sec_lcd/lcdtype_file_cmd
-    chown radio system sys/devices/virtual/misc/melfas_touchkey/enable_disable
-    chown radio system sys/devices/virtual/misc/melfas_touchkey/brightness
-    chown radio system sys/devices/virtual/misc/melfas_touchkey/touch_update
-    chown radio system sys/devices/virtual/misc/melfas_touchkey/touch_version
-    chown radio system sys/devices/virtual/sec/switch/usb_state
-    chown radio system sys/devices/virtual/sec/switch/disable_vbus
-    chown radio system sys/devices/virtual/sec/switch/usb_sel
-    chown radio system sys/devices/platform/msm_sdcc.2/polling
-    chown radio system sys/devices/platform/msm_sdcc.1/polling
-    chown radio system sys/devices/platform/android_usb/tethering
-    chown radio system sys/devices/virtual/graphics/fb1/hpd
-    chown system system sys/class/misc/notification/led
-    chown system system sys/class/misc/notification/bl_timeout
-    chown system system sys/class/misc/notification/wakelock
-    chown system system sys/class/vibetonz/immDuty/pwmvalue_intensity
+    # Permissions for kernel
+    chown radio system /sys/devices/virtual/graphics/fb1/video_mode
+    chown radio radio /sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd
+    chown radio radio /sys/devices/virtual/aclset/switch_aclset/aclset_file_cmd
+    chown radio system /sys/devices/virtual/sec/sec_lcd/lcd_power
+    chown radio system /sys/devices/virtual/sec/sec_lcd/lcdtype_file_cmd
+    chown radio system /sys/devices/virtual/misc/melfas_touchkey/enable_disable
+    chown radio system /sys/devices/virtual/misc/melfas_touchkey/brightness
+    chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_update
+    chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_version
+    chown radio system /sys/devices/virtual/sec/switch/usb_state
+    chown radio system /sys/devices/virtual/sec/switch/disable_vbus
+    chown radio system /sys/devices/virtual/sec/switch/usb_sel
+    chown radio system /sys/devices/platform/msm_sdcc.1/polling
+    chown radio system /sys/devices/platform/msm_sdcc.2/polling
+    chown radio system /sys/devices/platform/msm_hsusb/gadget/wakeup
+    chown radio system /sys/devices/platform/android_usb/tethering
+    chown radio system /sys/devices/virtual/graphics/fb1/hpd
+    chown system system /sys/class/misc/notification/led
+    chown system system /sys/class/misc/notification/bl_timeout
+    chown system system /sys/class/misc/notification/wakelock
+    chown system system /sys/class/vibetonz/immDuty/pwmvalue_intensity
 
-    # for silent reset
+    # Silent reset
     chown system system /proc/dump_enable
     chown system system /proc/silent
     chown system system /proc/nosim_handler
     copy /data/dump_enable /proc/dump_enable
 
+    # Permissions for CM Power HAL
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
@@ -211,7 +208,7 @@ on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
 on post-fs-data
-    # create log system
+    # Create log system
     mkdir /data/log 0775 system log
 
     mkdir /data/misc/radio 0775 radio system
@@ -266,7 +263,7 @@ service get_macaddrs /system/bin/get_macaddrs
     oneshot
     disabled
 
-# create filesystems if necessary
+# Create filesystems if necessary
 service setup_fs /system/bin/setup_fs /dev/block/mmcblk0p16 /dev/block/mmcblk0p17
     class core
     user root
