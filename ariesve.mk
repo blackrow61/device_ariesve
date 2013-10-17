@@ -53,10 +53,10 @@ PRODUCT_COPY_FILES += \
 
 # Recovery stuff
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/init.qcom.usb.rc:recovery/root/init.qcom.usb.rc \
     $(LOCAL_PATH)/recovery/init.recovery.qcom.rc:recovery/root/init.recovery.qcom.rc \
     $(LOCAL_PATH)/ramdisk/fstab.qcom:recovery/root/fstab.qcom \
-    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh
+    $(LOCAL_PATH)/recovery/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
+    $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Get BT macaddress
 PRODUCT_COPY_FILES += \
