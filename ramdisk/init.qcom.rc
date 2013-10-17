@@ -5,13 +5,13 @@ on early-init
     chmod 0644 /proc/cmdline
 
 on init
-    mkdir /storage 0550 system sdcard_r 
+    mkdir /storage 0550 system sdcard_r
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
     mkdir /storage/usbdisk 0000 system system
 
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk 
+    export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
     # for backwards compatibility
     symlink /storage/sdcard0 /sdcard
@@ -113,6 +113,10 @@ on boot
     chown system input /sys/class/input/event9/device/raw_data
     chown system input /sys/class/input/event9/device/status
     chown system input /sys/class/input/event9/device/testmode
+
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
 
     # Jig
     chmod 0664 /sys/devices/virtual/jig/jig/jig
