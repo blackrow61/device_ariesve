@@ -142,7 +142,9 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libstagefrighthw \
     libc2dcolorconvert \
-    libstagefright_nuplayer
+    libstagefright_nuplayer \
+    libstagefright_avc_common \
+    libstagefright_avcenc
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
