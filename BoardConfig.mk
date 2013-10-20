@@ -63,6 +63,9 @@ BOARD_KERNEL_PAGESIZE := 4096
 TARGET_KERNEL_SOURCE := kernel/samsung/msm7x30/
 TARGET_KERNEL_CONFIG := ariesve_defconfig
 
+# Build kernel using Christopher's Linaro 4.8 toolchain
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-cortex_a8-linux-gnueabi-linaro_4.8.2
+
 # WiFi
 BOARD_HAVE_SAMSUNG_WIFI          := true
 WIFI_BAND                        := 802_11_ABG
