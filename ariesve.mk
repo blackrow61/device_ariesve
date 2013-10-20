@@ -60,7 +60,7 @@ PRODUCT_COPY_FILES += \
 
 # Get BT macaddress
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/get_macaddrs:system/bin/get_macaddrs
+    $(LOCAL_PATH)/config/get_macaddrs:system/bin/get_macaddrs
 
 # Touchscreen calibration
 PRODUCT_COPY_FILES += \
@@ -141,10 +141,7 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxVdec \
     libstagefrighthw \
-    libc2dcolorconvert \
-    libstagefright_nuplayer \
-    libstagefright_avc_common \
-    libstagefright_avcenc
+    libc2dcolorconvert
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -188,25 +185,6 @@ $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt
-
-# Kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-    LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/zImage
-else
-    LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
-# Modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/dhd.ko:root/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/exfat.ko:root/lib/modules/exfat.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:root/lib/modules/cifs.ko \
-    $(LOCAL_PATH)/prebuilt/dhd.ko:system/lib/modules/dhd.ko \
-    $(LOCAL_PATH)/prebuilt/exfat.ko:system/lib/modules/exfat.ko \
-    $(LOCAL_PATH)/prebuilt/cifs.ko:system/lib/modules/cifs.ko
 
 # Build properties
 ADDITIONAL_DEFAULT_PROPERTIES += \
