@@ -113,8 +113,7 @@ PRODUCT_PACKAGES += \
     audio.primary.msm7x30 \
     audio_policy.msm7x30 \
     libaudio-resampler \
-    libaudioparameter \
-    libtinyalsa
+    libaudioparameter
 
 # Graphics
 PRODUCT_PACKAGES += \
