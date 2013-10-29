@@ -1,3 +1,6 @@
+# Inherit from our custom GSM configuration
+$(call inherit-product, vendor/omni/config/gsm.mk)
+
 # Inherit device configuration
 $(call inherit-product, device/samsung/ariesve/full_ariesve.mk)
 
@@ -6,6 +9,8 @@ PRODUCT_RELEASE_NAME := ariesve
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
+
+ROM_BUILDTYPE := RELEASE
 
 # Setup device configuration
 PRODUCT_NAME := omni_ariesve
