@@ -78,3 +78,6 @@ ro.cwm.enable_key_repeat=true
 
 # Enable reboot to download in recovery
 ro.bootloader.mode=download
+
+# Enable Low Ram Device flag
+ro.config.low_ram=true
