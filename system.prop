@@ -81,3 +81,6 @@ ro.bootloader.mode=download
 
 # Enable Low Ram Device flag
 ro.config.low_ram=true
+
+# Disable JIT
+dalvik.vm.jit.codecachesize=0
