@@ -1,17 +1,18 @@
-import init.qcom.usb.rc
+# Common init for msm7x30 devices
+
+import /init.qcom.usb.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0644 /proc/cmdline
 
 on init
-    mkdir /storage 0550 system sdcard_r
-    mkdir /storage/sdcard0 0000 system system
-    mkdir /storage/sdcard1 0000 system system
-    mkdir /storage/usbdisk 0000 system system
-    mkdir /mnt/media_rw/sdcard0 0775 system system
-    mkdir /mnt/media_rw/sdcard1 0775 system system
-    mkdir /mnt/media_rw/usbdisk 0775 system system
+    mkdir /mnt/media_rw/sdcard0 0700 system system
+    mkdir /mnt/media_rw/sdcard1 0700 system system
+    mkdir /mnt/media_rw/usbdisk 0700 system system
+    mkdir /storage/sdcard0 0700 system system
+    mkdir /storage/sdcard1 0700 system system
+    mkdir /storage/usbdisk 0700 system system
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
@@ -235,15 +236,15 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 # FUSE sdcard daemon for rich permissions (runs as media_rw)
-service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
 
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
     class late_start
     disabled
 
