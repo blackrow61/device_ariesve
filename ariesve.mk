@@ -163,7 +163,9 @@ PRODUCT_PACKAGES += \
 
 # Extra Packages
 PRODUCT_PACKAGES += \
-    AriesParts
+    AriesParts \
+    CMFileManager \
+    LockClock
 
 # Support for Browser's saved page feature. This allows
 # for pages saved on previous versions of the OS to be
