@@ -45,7 +45,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a8
-TARGET_USE_O3 := true
 
 # Dalvik startup with low memory footprint
 TARGET_ARCH_LOWMEM := true
