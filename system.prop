@@ -53,6 +53,7 @@ debug.mdpcomp.logs=0
 
 # Fix screenshots with legacy FB
 ro.bq.gpu_to_cpu_unsupported=1
+ro.zygote.disable_gl_preload=true
 
 # Disable Render dirty regions
 debug.hwui.render_dirty_regions=false
