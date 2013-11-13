@@ -49,6 +49,8 @@ TARGET_CPU_VARIANT := cortex-a8
 # Dalvik startup with low memory footprint
 TARGET_ARCH_LOWMEM := true
 
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
 # Hardware
 BOARD_HARDWARE_CLASS := device/samsung/ariesve/cmhw
 
