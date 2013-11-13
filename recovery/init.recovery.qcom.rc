@@ -1,6 +1,10 @@
 on init
     export LD_LIBRARY_PATH .:/sbin /system/lib
 
+    # legacy symlink
+    rmdir /external_sd
+    symlink /storage/sdcard1 /external_sd
+
 # Required to fix shutdown issue
 service rmt_storage /sbin/rmt_storage
 
