@@ -104,7 +104,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
     }
 
     @Override
-    protected void
+    protected RILRequest
     processSolicited (Parcel p) {
         int serial, error;
 
@@ -121,7 +121,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
         if (rr == null) {
             Rlog.w(RILJ_LOG_TAG, "Unexpected solicited response! sn: "
                     + serial + " error: " + error);
-            return;
+            return null;
         }
 
         Object ret = null;
@@ -252,8 +252,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                     AsyncResult.forMessage(rr.mResult, null, tr);
                     rr.mResult.sendToTarget();
                 }
-                rr.release();
-                return;
+                return rr;
             }
         }
 
@@ -269,13 +268,11 @@ public class SamsungRIL extends RIL implements CommandsInterface {
                             + requestToString(rr.mRequest)
                             + " exception, Processing Samsung SMS fix ", tr);
                     rr.onError(error, ret);
-                    rr.release();
-                    return;
+                    return rr;
                 }
             } else {
                 rr.onError(error, ret);
-                rr.release();
-                return;
+                return rr;
             }
         }
 
@@ -287,7 +284,7 @@ public class SamsungRIL extends RIL implements CommandsInterface {
             rr.mResult.sendToTarget();
         }
 
-        rr.release();
+        return rr;
     }
 
     @Override
@@ -345,9 +342,9 @@ public class SamsungRIL extends RIL implements CommandsInterface {
 
         switch(response) {
         /*
-				cat libs/telephony/ril_unsol_commands.h \
-				| egrep "^ *{RIL_" \
-				| sed -re 's/\{([^,]+),[^,]+,([^}]+).+/case \1: \2(rr, p); break;/'
+                                cat libs/telephony/ril_unsol_commands.h \
+                                | egrep "^ *{RIL_" \
+                                | sed -re 's/\{([^,]+),[^,]+,([^}]+).+/case \1: \2(rr, p); break;/'
          */
 
         case RIL_UNSOL_NITZ_TIME_RECEIVED: ret =  responseString(p); break;

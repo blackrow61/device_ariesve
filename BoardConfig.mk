@@ -121,9 +121,11 @@ USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_FORCE_CPU_UPLOAD := true
 TARGET_PROVIDES_LIBLIGHT := true
-BOARD_USE_LEGACY_TOUCHSCREEN := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_MEDIA_VARIANT := legacy
+
+# Input
+BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
@@ -181,9 +183,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
-# Recovery
-USE_SET_METADATA := false
-
 # Custom recovery files
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/ramdisk/fstab.qcom
 TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
@@ -217,3 +216,31 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_INCLUDE_FB2PNG := true
+USE_SET_METADATA := false
+
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+        device/samsung/ariesve/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+        file_contexts \
+        app.te \
+        bluetooth.te \
+        device.te \
+        domain.te \
+        drmserver.te \
+        file.te \
+        hci_init.te \
+        healthd.te \
+        init.te \
+        init_shell.te \
+        keystore.te \
+        kickstart.te \
+        mediaserver.te \
+        nfc.te \
+        rild.te \
+        surfaceflinger.te \
+        system.te \
+        ueventd.te \
+        wpa.te \
+        wpa_socket.te
