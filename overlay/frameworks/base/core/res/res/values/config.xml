@@ -150,9 +150,6 @@
         <item>40</item>
     </integer-array>
 
-    <!-- Disable the home key unlock setting -->
-    <bool name="config_disableHomeUnlockSetting">false</bool>
-
 
 <!--SCREEN & BRIGHTNESS-->
     <!-- Our amoled doesn't animate well. needed for crt effect -->
