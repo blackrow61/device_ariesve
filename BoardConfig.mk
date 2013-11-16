@@ -223,12 +223,13 @@ BOARD_SEPOLICY_DIRS += \
         device/samsung/ariesve/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-        file_contexts \
         app.te \
         bluetooth.te \
         device.te \
         domain.te \
         drmserver.te \
+        file_contexts \
+        files \
         file.te \
         hci_init.te \
         healthd.te \
@@ -237,10 +238,11 @@ BOARD_SEPOLICY_UNION += \
         keystore.te \
         kickstart.te \
         mediaserver.te \
-        nfc.te \
         rild.te \
         surfaceflinger.te \
         system.te \
         ueventd.te \
+        untrusted_app.te \
+        vold.te \
         wpa.te \
         wpa_socket.te
