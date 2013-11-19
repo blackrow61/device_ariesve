@@ -1,2 +1,0 @@
-add_lunch_combo full_ariesve-userdebug
-add_lunch_combo omni_ariesve-userdebug

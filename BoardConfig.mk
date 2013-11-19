@@ -1,5 +1,5 @@
 # Copyright (C) 2013 The CyanogenMod Project
-# Copyright (C) 2013 The OmniRom Project
+# Copyright (C) 2013 The ParanoidAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -108,8 +108,6 @@ BOARD_HAVE_SAMSUNG_AUDIO := true
 BOARD_USES_QCOM_AUDIO_RESETALL := true
 TARGET_QCOM_AUDIO_VARIANT := caf
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
-COMMON_GLOBAL_CFLAGS += -DHAVE_PRE_KITKAT_AUDIO_BLOB
 
 # EGL
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
@@ -144,7 +142,7 @@ BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 BOARD_USES_LEGACY_OVERLAY := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
 BOARD_CAMERA_USE_MM_HEAP := true
-#TARGET_DISABLE_ARM_PIE := true
+TARGET_DISABLE_ARM_PIE := true
 
 # QCOM
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
@@ -216,7 +214,6 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_INCLUDE_FB2PNG := true
-USE_SET_METADATA := false
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
