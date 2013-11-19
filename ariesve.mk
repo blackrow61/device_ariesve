@@ -166,7 +166,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AriesParts \
     CMFileManager \
-    LockClock
+    LockClock \
+    Apollo \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf
 
 # Support for Browser's saved page feature. This allows
 # for pages saved on previous versions of the OS to be
