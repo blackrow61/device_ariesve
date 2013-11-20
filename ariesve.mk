@@ -132,7 +132,8 @@ PRODUCT_PACKAGES += \
     gps.msm7x30 \
     lights.msm7x30 \
     power.msm7x30 \
-    sensors.ariesve
+    sensors.ariesve \
+    memtrack.msm7x30
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
