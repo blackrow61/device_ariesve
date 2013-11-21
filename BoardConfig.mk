@@ -185,6 +185,7 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_MAX_PARTITIONS := 28
 
 # Custom recovery files
+BOARD_RECOVERY_CWM := true
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/ramdisk/fstab.qcom
 TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
