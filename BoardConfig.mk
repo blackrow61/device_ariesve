@@ -21,11 +21,6 @@
 # definition file).
 #
 
-# WARNING: This line must come *before* including the proprietary
-# variant, so that it gets overwritten by the parent (which goes
-# against the traditional rules of inheritance).
-USE_CAMERA_STUB := true
-
 # Vendor files
 -include vendor/samsung/ariesve/BoardConfigVendor.mk
 
@@ -48,10 +43,6 @@ TARGET_CPU_VARIANT := cortex-a8
 
 # Dalvik startup with low memory footprint
 TARGET_ARCH_LOWMEM := true
-
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Hardware
 BOARD_HARDWARE_CLASS := device/samsung/ariesve/cmhw
@@ -116,6 +107,8 @@ BOARD_ALLOW_EGL_HIBERNATION := true
 USE_OPENGL_RENDERER := true
 TARGET_DOESNT_USE_FENCE_SYNC := true
 BOARD_EGL_NEEDS_FNW := true
+TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 # Display
 TARGET_USES_C2D_COMPOSITION := true
@@ -123,6 +116,7 @@ TARGET_FORCE_CPU_UPLOAD := true
 TARGET_PROVIDES_LIBLIGHT := true
 TARGET_QCOM_DISPLAY_VARIANT := legacy
 TARGET_QCOM_MEDIA_VARIANT := legacy
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 # Input
 BOARD_USE_LEGACY_TOUCHSCREEN := true
@@ -140,6 +134,7 @@ TARGET_PROVIDES_POWERHAL := true
 # Camera
 COMMON_GLOBAL_CFLAGS += -DSAMSUNG_CAMERA_LEGACY
 COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
+USE_CAMERA_STUB := true
 BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 BOARD_USES_LEGACY_OVERLAY := true
 BOARD_NEEDS_MEMORYHEAPPMEM := true
