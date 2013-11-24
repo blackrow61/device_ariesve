@@ -124,7 +124,6 @@ BOARD_USE_LEGACY_TOUCHSCREEN := true
 
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
-TARGET_ENABLE_DEFAULT_SMOOTHSTREAMING := true
 
 # Memory allocation
 TARGET_USES_ION := false
@@ -155,11 +154,6 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
-
-# FM Radio
-BOARD_HAVE_FM_RADIO := true
-BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-BOARD_FM_DEVICE := si4709
 
 # USB mass storage
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
@@ -214,32 +208,3 @@ TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_INCLUDE_FB2PNG := true
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-        device/samsung/ariesve/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-        app.te \
-        bluetooth.te \
-        device.te \
-        domain.te \
-        drmserver.te \
-        file_contexts \
-        files \
-        file.te \
-        hci_init.te \
-        healthd.te \
-        init.te \
-        init_shell.te \
-        keystore.te \
-        kickstart.te \
-        mediaserver.te \
-        rild.te \
-        surfaceflinger.te \
-        system.te \
-        ueventd.te \
-        untrusted_app.te \
-        vold.te \
-        wpa.te \
-        wpa_socket.te
