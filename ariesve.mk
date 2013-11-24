@@ -44,6 +44,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf
 
+# MemtrackHAL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/memtrack.msm7x30.so:system/lib/hw/memtrack.msm7x30.so
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
@@ -131,8 +135,7 @@ PRODUCT_PACKAGES += \
     gps.msm7x30 \
     lights.msm7x30 \
     power.msm7x30 \
-    sensors.ariesve \
-    memtrack.msm7x30
+    sensors.ariesve
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
