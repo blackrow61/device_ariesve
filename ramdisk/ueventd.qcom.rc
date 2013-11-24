@@ -13,7 +13,7 @@
 /dev/kgsl-3d0             0666   root       root
 /dev/kgsl-2d0             0666   root       root
 /dev/kgsl-2d1             0666   root       root
-/dev/ion                  0664   media      system
+/dev/ion                  0664   media     system
 
 # rfkill needs world writable/readable
 /dev/rfkill               0666   root       root
