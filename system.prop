@@ -4,11 +4,10 @@
 rild.libpath=/system/lib/libsec-ril.so
 rild.libargs=-d /dev/smd0
 
-ro.ril.hsxpa=1
-ro.ril.gprsclass=10
-ro.ril.disable.power.collapse=1
+ro.ril.hsxpa=2
+ro.ril.gprsclass=12
 ro.telephony.ril_class=SamsungRIL
-ro.telephony.ril.v3=datacall,icccardstatus
+ro.telephony.ril.v3=datacall,icccardstatus,facilitylock
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 ro.telephony.call_ring.multiple=0
@@ -69,4 +68,13 @@ ro.bootloader.mode=download
 
 # Enable Low Ram Device flag
 ro.config.low_ram=true
+
+# Disable preloading of EGL/GL drivers in Zygote at boot time
 ro.zygote.disable_gl_preload=true
+
+# Enable for debugging
+ro.debuggable=1
+persist.service.adb.enable=1
+
+# Disable JIT cache
+dalvik.vm.jit.codecachesize=0

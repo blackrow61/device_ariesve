@@ -3,23 +3,20 @@ import init.qcom.usb.rc
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0644 /proc/cmdline
-    chown system system /sys/kernel/debug/kgsl/proc
 
 on init
+    mkdir /storage 0555 system system
+    mkdir /storage/sdcard0 0000 system system
+    mkdir /storage/sdcard1 0000 system system
+    mkdir /storage/usbdisk 0000 system system
+    mkdir /mnt/media_rw/sdcard0 0000 system system
+    mkdir /mnt/media_rw/sdcard1 0000 system system
+    mkdir /mnt/media_rw/usbdisk 0000 system system
 
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1:/storage/usbdisk
 
-    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-
-    mkdir /storage/sdcard0 0770 root root
-    mkdir /storage/sdcard1 0770 root root
-    mkdir /storage/usbdisk 0770 root root
-
     # for backwards compatibility
-
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
     symlink /storage/sdcard1 /external_sd
@@ -28,7 +25,7 @@ on init
     symlink /storage/usbdisk /mnt/usbdisk
 
 on early-boot
-    # Set RLIMIT_MEMLOCK to 64MB
+    # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
 on boot
@@ -44,7 +41,7 @@ on boot
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /sys/devices/platform/msm_serial_hs.0/clock
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     setprop ro.bt.bdaddr_path "/data/.bt.info"
@@ -71,7 +68,7 @@ on boot
 
     chown root system /proc/net/ip_conntrack
 
-    # Geomagnetic
+    # geomagnetic
     chown system input /sys/class/input/event4/device/enable
     chown system input /sys/class/input/event4/device/delay
     chown system input /sys/class/input/event4/device/filter_enable
@@ -82,14 +79,14 @@ on boot
     chown system input /sys/class/input/event4/device/status
     chown system input /sys/class/input/event4/device/wake
 
-    # Geomagnetic RAW
+    # geomagnetic raw
     chown system input /sys/class/input/input5/threshold
     chown system input /sys/class/input/input5/distortion
     chown system input /sys/class/input/input5/shape
     chown compass input /sys/class/input/input5/offsets
     chown compass input /sys/class/input/input5/dynamic_matrix
 
-    # Accelerometer
+    # accelerometer
     chown system input /sys/class/input/event6/device/enable
     chown system input /sys/class/input/event6/device/delay
     chown system input /sys/class/input/event6/device/position
@@ -98,21 +95,21 @@ on boot
     chown system input /sys/class/input/event6/device/data
     chown system input /sys/class/input/event6/device/calibration
 
-    # Orientation
+    # orientation
     chown system input /sys/class/input/event7/device/enable
     chown system input /sys/class/input/event7/device/delay
     chown system input /sys/class/input/event7/device/wake
     chown system input /sys/class/input/event7/device/data
     chown system input /sys/class/input/event7/device/status
 
-    # Proximity
+    # proximity
     chown system input /sys/class/input/event8/device/enable
     chown system input /sys/class/input/event8/device/delay
     chown system input /sys/class/input/event8/device/wake
     chown system input /sys/class/input/event8/device/data
     chown system input /sys/class/input/event8/device/status
 
-    # Light Sensor
+    # light sensor
     chown system input /sys/class/input/event9/device/enable
     chown system input /sys/class/input/event9/device/delay
     chown system input /sys/class/input/event9/device/wake
@@ -120,10 +117,15 @@ on boot
     chown system input /sys/class/input/event9/device/status
     chown system input /sys/class/input/event9/device/testmode
 
-    # Jig
+
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_hsusb/gadget/wakeup
+
+    # for Jig
     chmod 0664 /sys/devices/virtual/jig/jig/jig
 
-    # Jack control
+    # for jack control
     chown system system /sys/class/jack/jack_selector/select_jack
 
     # Amp Tun (YDA165)
@@ -137,36 +139,39 @@ on boot
     chown system audio /sys/devices/virtual/misc/amp/gain_all
     chown system audio /sys/devices/virtual/misc/amp/save
 
-    # Permissions for kernel
-    chown radio system /sys/devices/virtual/graphics/fb1/video_mode
-    chown radio radio /sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd
-    chown radio radio /sys/devices/virtual/aclset/switch_aclset/aclset_file_cmd
-    chown radio system /sys/devices/virtual/sec/sec_lcd/lcd_power
-    chown radio system /sys/devices/virtual/sec/sec_lcd/lcdtype_file_cmd
-    chown radio system /sys/devices/virtual/misc/melfas_touchkey/enable_disable
-    chown radio system /sys/devices/virtual/misc/melfas_touchkey/brightness
-    chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_update
-    chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_version
-    chown radio system /sys/devices/virtual/sec/switch/usb_state
-    chown radio system /sys/devices/virtual/sec/switch/disable_vbus
-    chown radio system /sys/devices/virtual/sec/switch/usb_sel
-    chown radio system /sys/devices/platform/msm_sdcc.1/polling
-    chown radio system /sys/devices/platform/msm_sdcc.2/polling
-    chown radio system /sys/devices/platform/msm_hsusb/gadget/wakeup
-    chown radio system /sys/devices/platform/android_usb/tethering
-    chown radio system /sys/devices/virtual/graphics/fb1/hpd
-    chown system system /sys/class/misc/notification/led
-    chown system system /sys/class/misc/notification/bl_timeout
-    chown system system /sys/class/misc/notification/wakelock
-    chown system system /sys/class/vibetonz/immDuty/pwmvalue_intensity
+     # Permissions for kernel
+    chown radio system sys/devices/virtual/graphics/fb1/video_mode
+    chown radio radio sys/devices/virtual/gammaset/switch_gammaset/gammaset_file_cmd
+    chown radio radio sys/devices/virtual/aclset/switch_aclset/aclset_file_cmd
+    chown radio system sys/devices/virtual/sec/sec_lcd/lcd_power
+    chown radio system sys/devices/virtual/sec/sec_lcd/lcdtype_file_cmd
+    chown radio system sys/devices/virtual/misc/melfas_touchkey/enable_disable
+    chown radio system sys/devices/virtual/misc/melfas_touchkey/brightness
+    chown radio system sys/devices/virtual/misc/melfas_touchkey/touch_update
+    chown radio system sys/devices/virtual/misc/melfas_touchkey/touch_version
+    chown radio system sys/devices/virtual/sec/switch/usb_state
+    chown radio system sys/devices/virtual/sec/switch/disable_vbus
+    chown radio system sys/devices/virtual/sec/switch/usb_sel
+    chown radio system sys/devices/platform/msm_sdcc.2/polling
+    chown radio system sys/devices/platform/msm_sdcc.1/polling
+    chown radio system sys/devices/platform/android_usb/tethering
+    chown radio system sys/devices/virtual/graphics/fb1/hpd
+    chown system system sys/class/misc/notification/led
+    chown system system sys/class/misc/notification/bl_timeout
+    chown system system sys/class/misc/notification/wakelock
+    chown system system sys/class/vibetonz/immDuty/pwmvalue_intensity
 
-    # Silent reset
+    # Kernel Samepage Merging (KSM)
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
+
+    # for silent reset
     chown system system /proc/dump_enable
     chown system system /proc/silent
     chown system system /proc/nosim_handler
     copy /data/dump_enable /proc/dump_enable
 
-    # Permissions for CM Power HAL
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chmod 0664 /sys/devices/system/cpu/cpufreq/ondemand/boostfreq
     chown system system /sys/devices/system/cpu/cpufreq/ondemand/boostpulse
@@ -206,11 +211,6 @@ on boot
     # overhead in the kernel. Turn it off.
     write /sys/block/mmcblk0/queue/add_random 0
 
-    # KSM
-    write /sys/kernel/mm/ksm/pages_to_scan 100
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
-    write /sys/kernel/mm/ksm/run 1
-
 on fs
     chmod 0666 /dev/block/mmcblk0p14
 
@@ -219,7 +219,7 @@ on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
 on post-fs-data
-    # Create log system
+    # create log system
     mkdir /data/log 0775 system log
 
     mkdir /data/misc/radio 0775 radio system
@@ -228,24 +228,35 @@ on post-fs-data
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
     setprop vold.post_fs_data_done 1
 
+# FUSE sdcard daemon for rich permissions (runs as media_rw)
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
+
+# FUSE sdcard daemon for rich permissions (runs as media_rw)
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+# FUSE sdcard daemon for rich permissions (runs as media_rw)
+service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/sdcard1:/storage/usbdisk
+    class late_start
+    disabled
+
 service wpa_supplicant /system/bin/wpa_supplicant \
-    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
-    -I/system/etc/wifi/wpa_supplicant_overlay.conf \
-    -O/data/misc/wifi/sockets \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -O/data/misc/wifi/sockets -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
-    class late_start
+    class main
     disabled
     oneshot
 
@@ -255,7 +266,7 @@ service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
+    class main
     disabled
     oneshot
 
@@ -278,7 +289,7 @@ service get_macaddrs /system/bin/get_macaddrs
     oneshot
     disabled
 
-# Create filesystems if necessary
+# create filesystems if necessary
 service setup_fs /system/bin/setup_fs /dev/block/mmcblk0p16 /dev/block/mmcblk0p17
     class core
     user root
@@ -305,18 +316,6 @@ service lpmkey /system/bin/charging_mode
     class charger
     user root
     oneshot
-
-service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
-    class late_start
-    disabled
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
 
 on property:init.svc.ril-daemon=running
     start get_macaddrs
