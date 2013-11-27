@@ -5,6 +5,9 @@ on early-init
     chmod 0644 /proc/cmdline
 
 on init
+    setenforce 0
+    setprop ro.boot.selinux disabled
+
     mkdir /storage 0555 system system
     mkdir /storage/sdcard0 0000 system system
     mkdir /storage/sdcard1 0000 system system
