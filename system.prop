@@ -23,14 +23,14 @@ ro.sf.lcd_density=240
 # This is a 16.16 fixed point number.
 ro.opengles.version=131072
 
+# Perform dexopt in data as our cache partition is very small
+dalvik.vm.dexopt-data-only=1
+
 # Disable zram by default
 ro.zram.default=0
 
-# Set default number of background apps to 10
+# Reduce total number of background apps
 sys.mem.max_hidden_apps=5
-
-# Perform dexopt in data as our cache partition is very small
-dalvik.vm.dexopt-data-only=1
 
 # QCOM
 com.qc.hardware=true
@@ -38,21 +38,15 @@ debug.sf.hw=1
 debug.egl.hw=1
 debug.mdpcomp.logs=0
 
-# Fix screenshots with legacy FB
-ro.bq.gpu_to_cpu_unsupported=1
-
-# Disable Render dirty regions
-debug.hwui.render_dirty_regions=false
-
 # Low Power Audio
 lpa.decode=false
 lpa.use-stagefright=false
 
-# Resampler quality
+# Resampler quality 
 af.resampler.quality=255
 
 # Set default USB interface
-persist.sys.usb.config=mass_storage,adb
+persist.sys.usb.config=mass_storage
 
 # Increase speed for UMS transfer
 ro.vold.umsdirtyratio=50
@@ -60,21 +54,11 @@ ro.vold.umsdirtyratio=50
 # Storage configuration
 ro.vold.switchablepair=/storage/sdcard0,/storage/sdcard1
 
+# Change to 1 for swapping SD cards
+persist.sys.vold.switchexternal=0
+
 # Enable repeatable keys in recovery
 ro.cwm.enable_key_repeat=true
 
 # Enable reboot to download in recovery
 ro.bootloader.mode=download
-
-# Enable Low Ram Device flag
-ro.config.low_ram=true
-
-# Disable preloading of EGL/GL drivers in Zygote at boot time
-ro.zygote.disable_gl_preload=true
-
-# Enable for debugging
-ro.debuggable=1
-persist.service.adb.enable=1
-
-# Disable JIT cache
-dalvik.vm.jit.codecachesize=0
