@@ -44,10 +44,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/config/audio_policy.conf:system/etc/audio_policy.conf
 
-# MemtrackHAL
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/memtrack.msm7x30.so:system/lib/hw/memtrack.msm7x30.so
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.qcom.rc:root/init.qcom.rc \
@@ -181,14 +177,36 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libskia_legacy
 
+# Build properties
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0
+
+# Fix for Screenshots
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bq.gpu_to_cpu_unsupported=1
+
+# Enable for debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1
+
+# For applications to determine if they should turn off specific memory-intensive
+# features that work poorly on low-memory devices.
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.low_ram=true
+
+#Disable JIT cache
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.jit.codecachesize=0
+
+#disable preloading of EGL/GL drivers in Zygote at boot time
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.zygote.disable_gl_preload=true
+
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4329/device-bcm.mk)
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/nvram_net.txt:system/vendor/firmware/nvram_net.txt
-
-# Build properties
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.secure=0
 
 # Dalvik Heap
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)

@@ -32,7 +32,7 @@ int device_handle_key(int key_code, int visible) {
                     return GO_BACK;
                 break;
 
-		    case KEY_MENU:
+                    case KEY_MENU:
                 return SELECT_ITEM;
 
             case KEY_END:
