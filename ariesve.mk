@@ -106,6 +106,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lpm/media/battery_error.qmg:system/media/battery_error.qmg \
     $(LOCAL_PATH)/lpm/media/chargingwarning.qmg:system/media/chargingwarning.qmg
 
+# MemtrackHAL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/config/memtrack.msm7x30.so:system/lib/hw/memtrack.msm7x30.so
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
