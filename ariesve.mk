@@ -132,7 +132,8 @@ PRODUCT_PACKAGES += \
     lights.msm7x30 \
     power.msm7x30 \
     memtrack.msm7x30 \
-    sensors.ariesve
+    sensors.ariesve \
+    libgenlock
 
 # QCOM OMX
 PRODUCT_PACKAGES += \
@@ -141,7 +142,8 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libOmxVdec \
     libstagefrighthw \
-    libc2dcolorconvert
+    libc2dcolorconvert \
+    libdashplayer
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
