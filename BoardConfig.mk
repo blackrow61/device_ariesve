@@ -1,5 +1,5 @@
 # Copyright (C) 2013 The CyanogenMod Project
-# Copyright (C) 2013 The OmniRom Project
+# Copyright (C) 2013 The ParanoidAndroid Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -101,28 +101,25 @@ TARGET_QCOM_AUDIO_VARIANT := legacy
 BOARD_USES_QCOM_AUDIO_VOIPMUTE := true
 
 # EGL
+COMMON_GLOBAL_CFLAGS += -DNEW_ION_API
 BOARD_EGL_CFG := device/samsung/ariesve/config/egl.cfg
-BOARD_EGL_NEEDS_LEGACY_FB := true
 BOARD_ALLOW_EGL_HIBERNATION := true
 USE_OPENGL_RENDERER := true
-TARGET_DOESNT_USE_FENCE_SYNC := true
-BOARD_EGL_NEEDS_FNW := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
-BOARD_USE_MHEAP_SCREENSHOT := true
 
 # Display
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 TARGET_USES_C2D_COMPOSITION := true
-TARGET_FORCE_CPU_UPLOAD := true
 TARGET_PROVIDES_LIBLIGHT := true
-TARGET_QCOM_DISPLAY_VARIANT := legacy
-TARGET_QCOM_MEDIA_VARIANT := legacy
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
 
 # QCOM enhanced A/V
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Memory allocation
-TARGET_USES_ION := false
+TARGET_USES_ION := true
 
 # Power HAL
 TARGET_PROVIDES_POWERHAL := true
@@ -133,9 +130,8 @@ COMMON_GLOBAL_CFLAGS += -DBINDER_COMPAT
 USE_CAMERA_STUB := true
 BOARD_USES_QCOM_LEGACY_CAM_PARAMS := true
 BOARD_USES_LEGACY_OVERLAY := true
-BOARD_NEEDS_MEMORYHEAPPMEM := true
-BOARD_CAMERA_USE_MM_HEAP := true
 TARGET_DISABLE_ARM_PIE := true
+BOARD_USES_PMEM_ADSP := true
 
 # QCOM
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
@@ -168,10 +164,10 @@ TARGET_USERIMAGES_USE_EXT4 := true
 
 # Vold stuff
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
-BOARD_VOLD_MAX_PARTITIONS := 28
 
 # Custom recovery files
 BOARD_RECOVERY_CWM := true
+TARGET_RECOVERY_INITRC := device/samsung/ariesve/recovery/init.rc
 TARGET_RECOVERY_FSTAB := device/samsung/ariesve/ramdisk/fstab.qcom
 TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/ariesve/recovery/zImage
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/ariesve/recovery/recovery_keys.c
