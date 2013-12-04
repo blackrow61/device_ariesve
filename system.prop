@@ -29,14 +29,15 @@ dalvik.vm.dexopt-data-only=1
 # Disable zram by default
 ro.zram.default=0
 
-# Reduce total number of background apps
-sys.mem.max_hidden_apps=5
-
 # QCOM
 com.qc.hardware=true
 debug.sf.hw=1
 debug.egl.hw=1
 debug.mdpcomp.logs=0
+debug.mdpcomp.maxlayer=3
+debug.hwc.dynThreshold=1.9
+debug.egl.recordable.rgba8888=1
+debug.gralloc.map_fb_memory=true
 
 # Low Power Audio
 lpa.decode=false
@@ -62,3 +63,6 @@ windowsmgr.max_events_per_sec=150
 ro.max.fling_velocity=12000
 ro.min.fling_velocity=8000
 view.scroll_friction=0
+
+# Webview
+persist.webview.provider=classic

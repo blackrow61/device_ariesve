@@ -169,7 +169,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     AriesParts \
     CMFileManager \
-    LockClock \
     Apollo \
     DSPManager \
     libcyanogen-dsp \
